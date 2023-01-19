@@ -1,27 +1,82 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios';
 export default {
     components: {
-        HelloWorld,
+    },
+    data() {
+        return {
+            projects: {},
+            api_url: 'http://127.0.0.1:8000',
+            error: null,
+            max: 100
+        }
+    },
+    methods: {
+        getProject(url) {
+            axios
+                .get(url)
+                .then(response => {
+                    console.log(response.data.results);
+                    this.projects = response.data.results;
+                })
+                .catch(error => {
+                    console.error(error)
+                    this.error = error.message
+                })
+        },
+        getImageUrl(imageUrl) {
+            //console.log(imageUrl);
+            if (imageUrl) {
+                return this.api_url + '/storage/' + imageUrl
+            }
+            return '/img/notfound.png'
+        },
+        sliceDescription(text) {
+            if (text.length > this.max) {
+                return text.slice(0, this.max) + '...'
+            }
+        }
+    },
+    mounted() {
+        this.getProject(this.api_url + '/api/projects');
     }
 }
+
+
 </script>
 
 <template>
+
     <section class="vue-home">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-column justify-content-center align-items-center vh-100">
-                    <div class="logos">
-                        <a href="https://vitejs.dev" target="_blank">
-                            <img src="/vite.svg" class="logo" alt="Vite logo" />
-                        </a>
-                        <a href="https://vuejs.org/" target="_blank">
-                            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-                        </a>
+        <div class="container py-5">
+            <h1 class="pb-4">All Projects</h1>
+            <div class="row row-cols-3 g-4">
+                <div class="col" v-for="project in projects.data">
+                    <div class="card">
+                        <img class="card-image-top" :src="getImageUrl(project.cover_image)" alt="">
+                        <div class="card-body">
+                            <h5>{{ project.title }}</h5>
+                            <p>{{ sliceDescription(project.description) }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="type">
+                                <strong>Type: </strong>
+                                <span v-if="project.type">{{ project.type.name }}</span>
+                                <span v-else>Untyped</span>
+                            </div>
+                            <div class="technologies">
+                                <strong>Technologies: </strong>
+                                <template v-if="project.technologies.length > 0">
+                                    <span v-for="technology in project.technologies">
+                                        {{ technology.name }}/
+                                    </span>
+                                </template>
+                                <template v-else>
+                                    <span>No technologies in this project.</span>
+                                </template>
+                            </div>
+                        </div>
                     </div>
-                    <HelloWorld />
                 </div>
             </div>
         </div>
@@ -30,31 +85,4 @@ export default {
 
 <style lang="scss">
 @use './styles/general.scss';
-
-.vue-home {
-    color: #2c3e50;
-    background: #181818;
-    transition: color 0.5s, background-color 0.5s;
-    line-height: 1.6;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-        Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15px;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
