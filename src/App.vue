@@ -1,11 +1,11 @@
 <script>
 import AppNav from './components/AppNav.vue';
-import AppMain from './components/AppMain.vue';
-import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
+
 export default {
     components: {
         AppNav,
-        AppMain
+        ProjectCard
     },
 
 }
@@ -15,7 +15,7 @@ export default {
 
 <template>
     <AppNav></AppNav>
-    <AppMain></AppMain>
+    <ProjectCard></ProjectCard>
 </template>
 
 <style lang="scss">
