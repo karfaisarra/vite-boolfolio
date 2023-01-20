@@ -48,7 +48,6 @@ export default {
 
     <section class="vue-home">
         <div class="container py-5">
-            <h1 class="pb-4">All Projects</h1>
             <div class="row row-cols-3 g-4">
                 <div class="col" v-for="project in projects.data">
                     <div class="card">
@@ -74,6 +73,8 @@ export default {
                                     <span>No technologies in this project.</span>
                                 </template>
                             </div>
+                            <router-link :to="{ name: 'single-project', params: { slug: project.slug } }"> Read
+                                More</router-link>
                         </div>
                     </div>
                 </div>
