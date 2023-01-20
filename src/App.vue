@@ -1,11 +1,9 @@
 <script>
 import AppNav from './components/AppNav.vue';
-import ProjectCard from './components/ProjectCard.vue';
 
 export default {
     components: {
-        AppNav,
-        ProjectCard
+        AppNav
     },
 
 }
@@ -15,7 +13,7 @@ export default {
 
 <template>
     <AppNav></AppNav>
-    <ProjectCard></ProjectCard>
+    <router-view></router-view>
 </template>
 
 <style lang="scss">
