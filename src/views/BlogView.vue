@@ -1,18 +1,18 @@
 <script>
 import AppBanner from '../components/AppBanner.vue';
-import ProjectCard from '../components/ProjectCard.vue';
+import ProjectsList from '../components/ProjectsList.vue';
 
 export default {
     name: 'BlogView',
     components: {
-        ProjectCard, AppBanner
+        ProjectsList, AppBanner
     }
 }
 </script>
 
 <template>
     <AppBanner title="Projects" />
-    <ProjectCard />
+    <ProjectsList />
 </template>
 
 <style lang="scss" scoped>
