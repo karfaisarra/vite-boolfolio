@@ -8,14 +8,15 @@ export default {
 </script>
 
 <template>
-    <div class="banner shadow-sm">
-        <div class="container">
-            <h1 class="py-4 text-uppercase">{{ title }}</h1>
-        </div>
+    <div class="banner shadow-lg">
+        <h1 class="py-4 text-uppercase text-center"> &lt; {{ title }} &#47;&gt;</h1>
     </div>
 
 </template>
 
 <style lang="scss" scoped>
-
+.banner {
+    background-color: #396544;
+    color: white;
+}
 </style>

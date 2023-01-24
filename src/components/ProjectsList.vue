@@ -56,21 +56,21 @@ export default {
                 <div class="row row-cols-3 g-4">
                     <ProjectCard :project="project" v-for="project in projects.data" />
                 </div>
-                <nav aria-label="Page navigation" class="d-flex justify-content-center pt-5">
+                <nav aria-label="Page navigation" class="d-flex justify-content-center pt-5 border-0">
                     <ul class="pagination ">
-                        <li class="page-item" v-if="projects.prev_page_url" @click="prevPage(projects.prev_page_url)">
-                            <a class="page-link" aria-label="Previous">
+                        <li class="page-item " v-if="projects.prev_page_url" @click="prevPage(projects.prev_page_url)">
+                            <a class="page-link my_color" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">
+                        <li class="page-item " aria-current="page">
+                            <a class="page-link my_bg" href="#">
                                 {{ projects.current_page }}
                             </a>
                         </li>
 
-                        <li class="page-item" v-if="projects.next_page_url" @click="nextPage(projects.next_page_url)">
-                            <a class="page-link" aria-label="Next">
+                        <li class="page-item " v-if="projects.next_page_url" @click="nextPage(projects.next_page_url)">
+                            <a class="page-link my_color" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -78,7 +78,7 @@ export default {
                 </nav>
             </template>
             <template v-else-if="loading">
-                <div class="text-center mt-5">
+                <div class="text-center mt-5 loaging">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-hourglass-split" viewBox="0 0 16 16">
                         <path
@@ -93,5 +93,20 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.loaging {
+    font-size: 30px;
+}
 
+.my_color {
+    color: #396544;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.my_bg {
+    background-color: #396544;
+    color: white;
+}
 </style>

@@ -10,8 +10,8 @@ export default {
 </script>
 
 <template>
+    <AppBanner title="About Page" />
     <div class="container">
-        <AppBanner title="About Page" />
         <p class="lead">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, adipisci optio, tempore maiores sit
             asperiores

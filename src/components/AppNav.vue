@@ -5,9 +5,9 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+    <nav class="navbar navbar-expand-sm navbar-light  border-bottom my_color">
         <div class="container">
-            <a class="navbar-brand" href="/">Navbar</a>
+            <a class="navbar-brand" href="/"> <img width="80" src="../../public/img/logo2.png" alt=""> </a>
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
                 aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,5 +35,17 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my_color {
+    background-color: #F6B8AD;
+}
 
+a {
+    color: #396544;
+
+    font-size: 20px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
 </style>
