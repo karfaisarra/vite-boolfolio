@@ -21,7 +21,7 @@ export default {
             axios
                 .get(url)
                 .then(response => {
-                    console.log(response.data.results);
+                    //console.log(response.data.results);
                     this.projects = response.data.results;
                     this.loading = false
                 })
@@ -31,11 +31,11 @@ export default {
                 })
         },
         prevPage(url) {
-            console.log(url)
+            //console.log(url)
             this.getProject(url)
         },
         nextPage(url) {
-            console.log(url)
+            //console.log(url)
             this.getProject(url)
         }
 
@@ -78,7 +78,7 @@ export default {
                 </nav>
             </template>
             <template v-else-if="loading">
-                <div class="text-center mt-5 loaging">
+                <div class="text-center mt-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-hourglass-split" viewBox="0 0 16 16">
                         <path
@@ -93,12 +93,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.loaging {
-    font-size: 30px;
-}
-
 .my_color {
     color: #396544;
+    background-color: #cce9d3;
 
     &:hover {
         cursor: pointer;

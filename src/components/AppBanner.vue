@@ -18,5 +18,6 @@ export default {
 .banner {
     background-color: #396544;
     color: white;
+    margin-bottom: -0.5rem;
 }
 </style>

@@ -58,7 +58,7 @@ export default {
                 <span v-if="project.type">{{ project.type.name }}</span>
                 <span v-else>Untyped</span>
             </div>
-            <!-- <div class="technologies">
+            <div class="technologies">
                 <strong>Technologies: </strong>
                 <template v-if="project.technologies.length > 0">
                     <span v-for="technology in project.technologies">
@@ -68,10 +68,12 @@ export default {
                 <template v-else>
                     <span>No technologies in this project.</span>
                 </template>
-            </div> -->
+            </div>
+            <router-link :to="{ name: 'blog' }" class="btn my_btn">Projects Page</router-link>
+
         </div>
     </div>
-    <div v-else-if="loading" class="text-center mt-5">
+    <div v-else-if="loading" class="text-center mt-5 ">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-split"
             viewBox="0 0 16 16">
             <path
@@ -82,5 +84,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my_btn {
+    text-decoration: none;
+    background-color: #396544;
+    color: white;
+    padding: 0.4rem;
+    margin-top: 1rem;
 
+    &:hover {
+        background-color: #568662;
+    }
+
+}
 </style>
